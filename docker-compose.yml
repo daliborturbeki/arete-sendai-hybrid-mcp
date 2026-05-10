@@ -1,0 +1,11 @@
+services:
+  mcp:
+    image: node:20
+    working_dir: /app
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    command: sh -lc "npm install && npm start"
+    stdin_open: true
+    tty: true

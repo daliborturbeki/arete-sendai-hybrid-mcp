@@ -1,0 +1,31 @@
+{
+  "name": "sendai-agent-skills-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Flexible hybrid MCP server combining Arete realtime streams with SendAI on-chain actions",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "@solana-agent-kit/adapter-mcp": "2.0.5",
+    "@solana-agent-kit/plugin-defi": "2.0.5",
+    "@solana-agent-kit/plugin-misc": "2.0.5",
+    "@solana-agent-kit/plugin-token": "2.0.5",
+    "@solana/web3.js": "^1.98.4",
+    "@usearete/sdk": "^0.1.0",
+    "bs58": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "solana-agent-kit": "2.0.5",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

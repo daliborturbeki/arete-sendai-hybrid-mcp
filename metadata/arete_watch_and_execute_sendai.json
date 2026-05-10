@@ -1,0 +1,110 @@
+{
+  "name": "arete_watch_and_execute_sendai",
+  "description": "Watch any Arete view and execute a SendAI action on the selected match, with dry-run support.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "view": {
+        "type": "string",
+        "description": "Arete view name to watch."
+      },
+      "mode": {
+        "type": "string",
+        "enum": ["list", "state"],
+        "default": "list"
+      },
+      "key": {
+        "type": "string",
+        "description": "Required for state mode to identify the specific key."
+      },
+      "ws_url": {
+        "type": "string",
+        "format": "uri",
+        "description": "Optional Arete websocket URL override."
+      },
+      "stack_name": {
+        "type": "string",
+        "description": "Optional Arete stack override."
+      },
+      "filters": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        }
+      },
+      "take": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 500,
+        "default": 50
+      },
+      "stream_seconds": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 300,
+        "default": 30
+      },
+      "where_field": {
+        "type": "string"
+      },
+      "where_op": {
+        "type": "string",
+        "enum": ["eq", "neq", "gt", "gte", "lt", "lte", "contains"]
+      },
+      "where_value": {
+        "oneOf": [
+          { "type": "string" },
+          { "type": "number" },
+          { "type": "boolean" }
+        ]
+      },
+      "sort_by": {
+        "type": "string"
+      },
+      "sort_order": {
+        "type": "string",
+        "enum": ["asc", "desc"],
+        "default": "desc"
+      },
+      "select_fields": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+      "action_name": {
+        "type": "string",
+        "description": "Exposed SendAI action to call after selecting a match."
+      },
+      "action_input": {
+        "type": "object",
+        "default": {}
+      },
+      "dry_run": {
+        "type": "boolean",
+        "default": true
+      },
+      "execute_on": {
+        "type": "string",
+        "enum": ["first_match", "best_match"],
+        "default": "best_match"
+      }
+    },
+    "required": ["view", "action_name"]
+  },
+  "examples": [
+    {
+      "view": "markets",
+      "where_field": "symbol",
+      "where_op": "eq",
+      "where_value": "SOL",
+      "sort_by": "volumeUsd",
+      "sort_order": "desc",
+      "action_name": "trade",
+      "action_input": {
+        "outputMint": "So11111111111111111111111111111111111111112",
+        "inputAmount": "0.1"
+      },
+      "dry_run": true,
+      "execute_on": "best_match"
+    }
+  ]
+}
