@@ -7,7 +7,7 @@ Single MCP server that combines:
 
 This example is flexible by design: agents can watch any Arete view and optionally execute a SendAI action when a condition matches.
 
-> **Note:** There is currently no official overlap between Arete and SendAI for Ore specifically. Arete publishes the Ore stack; SendAI's plugins (`plugin-defi`, `plugin-token`, `plugin-misc`) cover Jupiter, Raydium, Marginfi, Kamino, and similar protocols - but not the Ore on-chain program. To execute Ore deposits through this server, a custom tool would need to be written that calls the Ore program directly. The watch-and-execute flow works end-to-end for any protocol that SendAI already supports.
+> **Note:** Arete already provides the Ore stack, and future protocol support is expected to expand toward integrations similar to Jupiter, Kamino, and other DeFi primitives. This repository is designed with that evolution in mind, so once Arete support becomes available through SendAI-compatible tooling, the existing watch-and-execute flow can be extended with minimal changes.
 
 ## Arete Tools
 
